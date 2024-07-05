@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { formatDate } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatCard } from '@angular/material/card';
-import { ApiResponseInterface, DeviceInterface } from './devices.interfacel';
+import { ApiResponseInterface, DeviceInterface } from './devices.interface';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
@@ -46,7 +46,6 @@ export class DevicesComponent implements OnInit {
       )
       .subscribe({
         next: (response: ApiResponseInterface) => {
-          console.log('Device fetch success', response);
           if (response && response.data && response.data.metering_devices) {
             this.dataSource = response.data.metering_devices.data;
             this.totalDevices = response.data.metering_devices.total;

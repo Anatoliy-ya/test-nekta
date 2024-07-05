@@ -24,15 +24,14 @@ import { MatCardModule } from '@angular/material/card';
 export class LoginComponent {
   email = '';
   password = '';
+  errorAuth = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
   login() {
-    console.log('login', this.email, this.password);
-
     this.authService.login(this.email, this.password).subscribe({
       next: (response: AuthResponseInterface) => {
-        console.log('Login successful', response);
+        console.log('Login successful');
         const access_token = response.data.access_token;
         if (!access_token) {
           return;
@@ -42,6 +41,7 @@ export class LoginComponent {
       },
       error: (error) => {
         console.log('Login failed', error);
+        this.errorAuth = error.error.error.data.msg;
       },
     });
   }
