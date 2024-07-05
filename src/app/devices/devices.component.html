@@ -1,26 +1,36 @@
-<mat-card>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <!-- ID Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>ID</th>
-      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-    </ng-container>
+<div class="wrapper-table">
+  <mat-card>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Name</th>
-      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-    </ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
 
-    <!-- Last Active Column -->
-    <ng-container matColumnDef="last_active">
-      <th mat-header-cell *matHeaderCellDef>Last Active</th>
-      <td mat-cell *matCellDef="let element">
-        {{ formatDate(element.last_active) }}
-      </td>
-    </ng-container>
+      <!-- Last Active Column -->
+      <ng-container matColumnDef="last_active">
+        <th mat-header-cell *matHeaderCellDef>Last Active</th>
+        <td mat-cell *matCellDef="let element">
+          {{ formatDate(element.last_active) }}
+        </td>
+      </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
-</mat-card>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </mat-card>
+  <mat-card class="paginator">
+    <mat-paginator
+      [length]="totalDevices"
+      [pageSize]="10"
+      (page)="changePage($event)"
+    >
+    </mat-paginator>
+  </mat-card>
+</div>

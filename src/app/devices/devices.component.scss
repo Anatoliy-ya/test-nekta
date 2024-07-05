@@ -1,3 +1,10 @@
+.wrapper-table {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  position: relative;
+  height: 700px;
+}
 table {
   width: 900px;
   border-spacing: 10px;
@@ -5,4 +12,14 @@ table {
 
 .mat-mdc-table {
   border-radius: 10px;
+}
+
+.paginator {
+  overflow: hidden;
+  border: 1px solid rgb(143, 143, 143);
+  z-index: 2;
+  margin-top: 20px;
+  width: 400px;
+  position: absolute;
+  bottom: -4rem;
 }
